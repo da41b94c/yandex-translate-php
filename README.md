@@ -1,4 +1,6 @@
 # yandex-translate-php
+[![Packagist Version](https://img.shields.io/packagist/v/da41b94c/yandex-translate-php.svg)](https://packagist.org/packages/da41b94c/yandex-translate-php)
+[![CI](https://github.com/da41b94c/yandex-translate-php/actions/workflows/ci.yml/badge.svg)](https://github.com/da41b94c/yandex-translate-php/actions/workflows/ci.yml)
 
 PHP-клиент для **Yandex Cloud Translate API**:
 
