@@ -23,7 +23,7 @@ composer require da41b94c/yandex-translate-php
 
 ## Настройка
 
-Рекомендуется задавать переменные окружения (на сервере/в CI secrets, не в репозитории):
+Рекомендуется задавать переменные окружения:
 
 - `YANDEX_API_KEY`
 - `YANDEX_FOLDER_ID`
