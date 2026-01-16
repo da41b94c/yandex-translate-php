@@ -1,26 +1,36 @@
 name: CI
 
 on:
-	push:
-	pull_request:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
 
 jobs:
-	php:
-		runs-on: ubuntu-latest
-		strategy:
-			matrix:
-				php: ['7.2', '7.4', '8.1', '8.2', '8.3']
-		steps:
-			- uses: actions/checkout@v4
+  php:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        php: ["7.2", "7.4", "8.1", "8.2", "8.3"]
 
-			- uses: shivammathur/setup-php@v2
-				with:
-					php-version: ${{ matrix.php }}
-					extensions: curl
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
 
-			- name: Lint
-				run: |
-					find src -type f -name "*.php" -print0 | xargs -0 -n1 php -l
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php }}
+          extensions: curl
+          tools: composer:v2
 
-			- name: Composer validate
-				run: composer validate --no-check-all --no-interaction || true
+      - name: Composer validate
+        run: composer validate --no-interaction --strict
+
+      - name: Composer install
+        run: composer install --no-interaction --no-progress
+
+      - name: Lint PHP
+        run: |
+          find src examples -type f -name "*.php" -print0 | xargs -0 -n1 php -l
