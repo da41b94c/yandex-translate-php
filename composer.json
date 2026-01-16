@@ -1,0 +1,16 @@
+{
+	"name": "da41b94c/yandex-translate-php",
+	"description": "Yandex Cloud Translate API client",
+	"type": "library",
+	"license": "MIT",
+	"require": {
+		"php": ">=7.2",
+		"ext-curl": "*"
+	},
+	"autoload": {
+		"psr-4": {
+			"Da41b94c\\YandexTranslate\\": "src/"
+		}
+	},
+	"minimum-stability": "stable"
+}

@@ -1,0 +1,26 @@
+name: CI
+
+on:
+	push:
+	pull_request:
+
+jobs:
+	php:
+		runs-on: ubuntu-latest
+		strategy:
+			matrix:
+				php: ['7.2', '7.4', '8.1', '8.2', '8.3']
+		steps:
+			- uses: actions/checkout@v4
+
+			- uses: shivammathur/setup-php@v2
+				with:
+					php-version: ${{ matrix.php }}
+					extensions: curl
+
+			- name: Lint
+				run: |
+					find src -type f -name "*.php" -print0 | xargs -0 -n1 php -l
+
+			- name: Composer validate
+				run: composer validate --no-check-all --no-interaction || true
