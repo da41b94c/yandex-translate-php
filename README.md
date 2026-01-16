@@ -12,7 +12,7 @@ PHP-клиент для **Yandex Cloud Translate API**:
 
 ## Требования
 
-- PHP >= 7.2
+- PHP >= 7.4
 - ext-curl
 
 ## Установка (Composer)
